@@ -25,18 +25,12 @@ Route::get ('/{id?}',function($id='index'){
 
 
 
-Route::group (['middleware'=>'web'], function() {
-
-
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
-
-
-
-
-//Самый последний
-Route::get ('/{id?}', array('as'=>'main','uses'=>'BaseController@getIndex'))->where ('id','[0-9A-z_]+');
-
+Route::group(['middleware'=>array('web','auth')], function() {
+	Route::get('/home', 'HomeController@index');
 });
 
+Route::group(['middleware'=>'web'], function() {
+	Route::auth();	
+	//Самый последний
+	Route::get ('/{id?}', array('uses'=>'BaseController@getIndex'))->where ('id','[0-9 A-z_]+');
+});
