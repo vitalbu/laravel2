@@ -30,7 +30,10 @@ Route::group(['middleware'=>array('web','auth')], function() {
 });
 
 Route::group(['middleware'=>'web'], function() {
-	Route::auth();	
+	Route::auth();
+	Route::controllers([
+		'test'=>'TestController'
+	]);
 	//Самый последний
 	Route::get ('/{id?}', array('uses'=>'BaseController@getIndex'))->where ('id','[0-9 A-z_]+');
 });
