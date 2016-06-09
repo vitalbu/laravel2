@@ -29,6 +29,6 @@ class CreateUsersTable extends Migration
      */
     public function down() //удаление
     {
-        //Schema::drop('users');
+        Schema::drop('users');
     }
 }

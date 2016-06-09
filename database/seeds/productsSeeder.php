@@ -11,7 +11,7 @@ class productsSeeder extends Seeder
      */
     public function run()
     {
-            DB::table('products')->insert([
+		DB::table('products')->insert([
 			'cat_id'=>'2',
 			'name'=>'v2',
 			'discription'=>'hh',
